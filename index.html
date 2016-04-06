@@ -1,0 +1,51 @@
+<html>
+
+    <script src="http://localhost:3000/socket.io/socket.io.js" /></script>
+    <script>
+
+            var Game = (function () {
+                var socket = io('ws://localhost:3000', { reconnection: false });
+                var game = this;
+                socket.on('STATE_CHANGE', function (packet) {
+                    console.log(packet);
+                    game.state = packet;
+                });
+
+
+                socket.on('YOUR_DETAILS', function (usersDetails) {
+                    console.log(usersDetails);
+                    game.you = usersDetails;
+                });
+
+
+                socket.on('PLAYER_DISCONNECT', function (_id) {
+                    console.error(_id);
+                    console.error('Player ' + _id + ' disconnected');
+                })
+
+
+
+                window.testSkillInc = function () {
+                    socket.emit('LOBBY_STAT_ALTER', {
+                        direction: 'INC',
+                        skill: 1
+                    }, function (data) {
+                        console.log(data);
+                    });
+                }
+
+                window.testSkillDec = function () {
+                    socket.emit('LOBBY_STAT_ALTER', {
+                        direction: 'DEC',
+                        skill: 7
+                    }, function (data) {
+                        console.log(data);
+                    });
+                }
+            })();
+
+
+
+
+    </script>
+</html>
