@@ -1,6 +1,5 @@
 <html>
 
-    <script src="http://localhost:3000/socket.io/socket.io.js" /></script>
     <script>
 
             var Game = (function () {
@@ -22,6 +21,11 @@
                     console.error(_id);
                     console.error('Player ' + _id + ' disconnected');
                 })
+
+                socket.on('ERROR', function (err) {
+                    console.error(err);
+                })
+
 
 
 

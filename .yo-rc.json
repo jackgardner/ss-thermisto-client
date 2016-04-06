@@ -1,0 +1,7 @@
+{
+  "generator-react-webpack": {
+    "appName": "ssThermistoClient",
+    "style": "stylus",
+    "postcss": true
+  }
+}
