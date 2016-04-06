@@ -7,7 +7,7 @@ import DebugLog from './DebugLog/index.jsx';
 import React from 'react';
 class AppComponent extends React.Component {
   componentDidMount() {
-  },
+  }
   render () {
     return (
       <div className="index">

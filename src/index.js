@@ -3,8 +3,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/Main';
 
-import store from '../stores/GameStore';
-import startGame from '../sources/gameSource';
+import store from 'stores/GameStore';
+import startGame from 'sources/gameSource';
 import { Provider } from 'react-redux';
 
 
