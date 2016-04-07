@@ -1,4 +1,4 @@
-import { YOUR_DETAILS, UPDATE_USERS } from '../actions/gameActions';
+import { YOUR_DETAILS, UPDATE_USERS, HOST_CHANGE } from '../actions/gameActions';
 
 export default function initialState(state = initialState, action) {
   switch (action.type) {
@@ -11,6 +11,10 @@ export default function initialState(state = initialState, action) {
       return Object.assign({}, state, {
         current: action.details
       });
+
+    case HOST_CHANGE:
+      console.log("Host Changed! : ", action.currenthost);
+      return state;
     default:
       return state;
   }
