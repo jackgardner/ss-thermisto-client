@@ -1,15 +1,25 @@
 import 'core-js/fn/object/assign';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/Main';
+import App from './components/Main.jsx';
 
-import store from 'stores/GameStore';
-import startGame from 'sources/gameSource';
+import DevTools from './components/DevTools';
+import configureStore from 'stores/GameStore';
+import init from 'sources/gameSource';
+
 import { Provider } from 'react-redux';
 
-
-startGame(store);
+const store = configureStore(window.__INITIAL_STATE__);
+init(store);
 
 
 // Render the main component into the dom
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('app'));
+ReactDOM.render(
+  <Provider store={store}>
+    <div>
+    <App />
+
+    <DevTools />
+      </div>
+  </Provider>,
+  document.getElementById('app'));

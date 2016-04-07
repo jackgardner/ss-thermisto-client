@@ -1,8 +1,6 @@
 
-export function error (err) {
-  return { type: 'error', message: err };
-}
+export const GAME_INFO = 'GAME_INFO';
+export const YOUR_DETAILS = 'YOUR_DETAILS';
 
-export function gameInfo(info) {
-  return { type: 'game-info', message: info };
-}
+export const STATE_CHANGE = 'STATE_CHANGE';
+export const UPDATE_USERS = 'UPDATE_USERS';
