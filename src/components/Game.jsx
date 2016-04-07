@@ -8,8 +8,21 @@ class Game extends React.Component {
 
   render () {
 
-    console.log(this.props);
     if (!this.props.game) return null;
+
+
+    if (this.props.game.state == "CREATING"){
+    return (
+    <div className="ui main text container">
+      <div>Game is APPLES in <strong>{this.props.game.state}</strong></div>
+      <ul>
+        {this.props.game.players.map((player) => {
+          return <li>{player.name} {(this.props.users.current._id == player._id)?<span>(you)</span>:null} {(this.props.game.hostplayer == player._id)?<span>HOST</span>:null}</li>
+        })}
+      </ul>
+    </div>
+    );
+    }
 
     return (
       <div className="ui main text container">
