@@ -4,16 +4,9 @@ import ReactDOM from 'react-dom';
 import App from './components/Main.jsx';
 
 import DevTools from './components/DevTools';
-import configureStore from 'stores/GameStore';
-import init from 'sources/gameSource';
+import store from './stores/GameStore';
 
 import { Provider } from 'react-redux';
-
-const store = configureStore({
-  account: null
-});
-init(store);
-
 
 // Render the main component into the dom
 ReactDOM.render(

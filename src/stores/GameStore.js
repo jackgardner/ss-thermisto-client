@@ -1,13 +1,17 @@
-import { createStore, compose } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
 import DevTools from '../components/DevTools';
 
 import rootReducer from '../reducers';
+import init from 'sources/gameSource';
+import remoteActionsMiddleware from '../middleware/remote_action_middleware';
+import socket from '../socket';
 
 const finalCreateStore = compose(
+  applyMiddleware(remoteActionsMiddleware(socket)),
   DevTools.instrument()
 )(createStore);
 
-export default function configureStore(initialState) {
+function configureStore(initialState) {
   const store = finalCreateStore(rootReducer, initialState);
 
   if (module.hot) {
@@ -20,3 +24,12 @@ export default function configureStore(initialState) {
 
   return store;
 }
+
+
+const store = configureStore({
+  account: null
+});
+
+init(store);
+
+export default store;

@@ -1,5 +1,8 @@
 import React from 'react';
 import request from 'superagent';
+import store from '../../stores/GameStore';
+import { USER_AUTH } from '../../actions/gameActions';
+
 class LoginScreen extends React.Component {
 
   constructor() {
@@ -13,7 +16,14 @@ class LoginScreen extends React.Component {
     e.preventDefault();
     request
       .post('http://localhost:3000/login')
-      .send({ email: , password: })
+      .send({ email: this.refs.email.value , password:  this.refs.password.value })
+      .end(function (err, response) {
+        console.log(arguments);
+
+        store.dispatch({ type: 'USER_LOGIN', account: response.body })
+      });
+
+
   }
 
   render () {
@@ -29,13 +39,13 @@ class LoginScreen extends React.Component {
             <div className="field">
               <div className="ui left icon input">
                 <i className="user icon"></i>
-                <input type="text" name="email" placeholder="E-mail address" />
+                <input ref="email" type="text" name="email" placeholder="E-mail address" />
               </div>
             </div>
             <div className="field">
               <div className="ui left icon input">
                 <i className="lock icon"></i>
-                <input type="password" name="password" placeholder="Password" />
+                <input ref="password" type="password" name="password" placeholder="Password" />
               </div>
             </div>
             <input type="submit" className="ui fluid large teal submit button" value="Login"/>

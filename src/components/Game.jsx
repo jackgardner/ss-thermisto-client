@@ -13,10 +13,10 @@ class Game extends React.Component {
 
   render () {
     var content = null;
-    if (!this.props.game) return null;
 
-
+    console.log(this.props);
     if (!this.props.account) return <LoginScreen {...this.props} />;
+    if (!this.props.game) return null;
 
 
     switch (this.props.game.state) {
