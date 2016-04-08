@@ -12,7 +12,6 @@ import '../../semantic/dist/semantic.css';
 // import '../../semantic/dist/components/sticky';
 
 import React from 'react';
-import Menu from './Menu.jsx';
 import Game from '../containers/GameContainer';
 
 
@@ -24,7 +23,6 @@ class AppComponent extends React.Component {
   render () {
     return (
       <div >
-        <Menu />
         <Game />
       </div>
     );

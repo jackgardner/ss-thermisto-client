@@ -9,7 +9,9 @@ import init from 'sources/gameSource';
 
 import { Provider } from 'react-redux';
 
-const store = configureStore(window.__INITIAL_STATE__);
+const store = configureStore({
+  account: null
+});
 init(store);
 
 

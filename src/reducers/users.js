@@ -13,7 +13,6 @@ export default function initialState(state = initialState, action) {
       });
 
     case HOST_CHANGE:
-      console.log("Host Changed! : ", action.currenthost);
       return state;
     default:
       return state;

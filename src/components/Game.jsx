@@ -1,5 +1,10 @@
 import 'styles/Game.css';
 import React from 'react';
+import * as gameStates from '../constants/states';
+import Menu from './Menu.jsx';
+
+import LobbyScreen from '../components/screens/LobbyScreen.jsx';
+import LoginScreen from '../components/screens/LoginScreen.jsx';
 
 class Game extends React.Component {
 
@@ -7,22 +12,27 @@ class Game extends React.Component {
   }
 
   render () {
-
+    var content = null;
     if (!this.props.game) return null;
 
-    return (
-      <div className="ui main text container">
-        <div>Game is currently in <strong>{this.props.game.state}</strong></div>
-        <div>Players in game: {this.props.game.players.length}</div>
 
-        <ul>
-          {this.props.game.players.map((player) => {
-            return (<li>{player.name}
-              {(this.props.users.current._id == player._id)?<span>(you)</span>:null}
-              {(this.props.game.hostplayer == player._id)?<span>HOST</span>:null}
-            </li>);
-          })}
-        </ul>
+    if (!this.props.account) return <LoginScreen {...this.props} />;
+
+
+    switch (this.props.game.state) {
+      case gameStates.LOBBY:
+        content = <LobbyScreen {...this.props} />;
+        break;
+      default:
+        return null;
+    }
+
+    return (
+      <div>
+        <Menu  {...this.props} />
+        <div className="ui container content">
+          {content}
+        </div>
       </div>
     );
   }
