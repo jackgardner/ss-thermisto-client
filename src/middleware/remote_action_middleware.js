@@ -2,10 +2,9 @@ export default socket => store => next => action => {
 
   switch (action.type) {
     case "USER_LOGIN":
-
-      console.log(action);
       socket
         .on('authenticated', function () {
+          console.log("Should Dispatch");
           store.dispatch({
             type: 'USER_AUTH',
             token: action.token,
