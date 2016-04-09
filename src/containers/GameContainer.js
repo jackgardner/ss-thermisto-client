@@ -8,7 +8,7 @@ const mapStateToProps = (state) => {
     info: state.game.info,
     game: state.game.state,
     users: state.users,
-
+    auth: state.auth,
     account: state.account
   }
 };

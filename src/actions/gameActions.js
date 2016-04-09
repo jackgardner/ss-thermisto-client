@@ -7,3 +7,4 @@ export const UPDATE_USERS = 'UPDATE_USERS';
 export const HOST_CHANGE  = 'HOST_CHANGE';
 
 export const USER_AUTH = 'USER_AUTH';
+export const AUTH_ERROR = 'AUTH_ERROR';

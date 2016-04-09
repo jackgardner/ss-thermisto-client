@@ -18,15 +18,26 @@ class LoginScreen extends React.Component {
       .post('http://localhost:3000/login')
       .send({ email: this.refs.email.value , password:  this.refs.password.value })
       .end(function (err, response) {
-        console.log(arguments);
-
-        store.dispatch({ type: 'USER_LOGIN', account: response.body })
+        if (err) throw err;
+        store.dispatch(response.body)
       });
 
 
   }
 
   render () {
+
+    let error = null;
+
+    if (this.props.auth.error) {
+      error = (<div className="ui negative message">
+        <i className="close icon"></i>
+        <div className="header">
+          Oops
+        </div>
+        <p>{this.props.auth.error}
+        </p></div>);
+    }
     return (<div className="ui middle aligned center aligned grid">
       <div className="column">
         <h2 className="ui teal image header">
@@ -34,6 +45,7 @@ class LoginScreen extends React.Component {
               Log-in to your account
             </div>
         </h2>
+        {error}
         <form className="ui large form" onSubmit={this.onLogin}>
           <div className="ui stacked segment">
             <div className="field">
