@@ -9,7 +9,7 @@ class LobbyScreen extends React.Component {
         <h3> This GameID : {this.props.info.gameid} </h3>
         <h3> Users: </h3>
         {[...this.props.game.players].map((x, i) => {
-          return (<Player key={x._id} player={x} {...this.props} />);
+          return (<Player key={x._id} player={x} currentPlayer={this.props.users.current._id === x._id} {...this.props} />);
         }
         )}
       </div>
